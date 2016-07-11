@@ -13,7 +13,6 @@ use yii\console\Application as ConsoleApplication;
  */
 class Bootstrap implements BootstrapInterface {
 
-
     /** @inheritdoc */
     public function bootstrap($app) {
         /** @var Module $module */
@@ -30,7 +29,7 @@ class Bootstrap implements BootstrapInterface {
                     'sourceLanguage' => 'en-US'
                 ];
             }
-            
+
             if (!$app instanceof ConsoleApplication) {
                 $module->controllerNamespace = 'jarrus90\WebsiteComments\Controllers';
                 $configUrlRule = [
@@ -43,13 +42,9 @@ class Bootstrap implements BootstrapInterface {
                 $configUrlRule['class'] = 'yii\web\GroupUrlRule';
                 $rule = Yii::createObject($configUrlRule);
                 $app->urlManager->addRules([$rule], false);
-                
-                $app->params['admin']['menu']['website-comments'] = [
-                    'label' => Yii::t('website-comments', 'Website comments'),
-                    'url' => '/website-comments/admin/index',
-                    'icon' => '<i class="fa fa-fw fa-mail-reply-all"></i>',
-                    'position' => 61
-                ];
+                $app->params['admin']['menu']['website-comments'] = function() {
+                    return $module->getAdminMenu();
+                };
             }
 
             $app->params['yii.migrations'][] = '@jarrus90/WebsiteComments/migrations/';
