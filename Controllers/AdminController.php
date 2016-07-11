@@ -10,6 +10,21 @@ use yii\filters\AccessControl;
 
 class AdminController extends AdminCrudAbstract {
 
+    /** @inheritdoc */
+    public function behaviors() {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['website_comments_moderator'],
+                    ],
+                ],
+            ],
+        ];
+    }
+
     protected $modelClass = 'jarrus90\WebsiteComments\Models\Comment';
     protected $formClass = 'jarrus90\WebsiteComments\Models\Comment';
     protected $searchClass = 'jarrus90\WebsiteComments\Models\Comment';

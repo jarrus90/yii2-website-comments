@@ -47,7 +47,8 @@ class Bootstrap implements BootstrapInterface {
                 $app->params['admin']['menu']['website-comments'] = [
                     'label' => Yii::t('website-comments', 'Website comments'),
                     'url' => '/website-comments/admin/index',
-                    'position' => 30
+                    'icon' => '<i class="fa fa-fw fa-mail-reply-all"></i>',
+                    'position' => 61
                 ];
             }
 
