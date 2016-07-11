@@ -8,7 +8,7 @@ use yii\widgets\ListView;
 
 ListView::widget([
     'dataProvider' => $dataProvider,
-    'id' => 'support-site-replies',
+    'id' => 'website-comments-site-replies',
     'itemOptions' => [
         'tag' => false
     ],

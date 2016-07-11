@@ -19,6 +19,6 @@ $form = ActiveForm::begin([
             ],
         ]);
 echo $form->field($model, 'content');
-echo Html::submitButton(Yii::t('support', 'Save'), ['class' => 'btn btn-success btn-block']);
+echo Html::submitButton(Yii::t('website-comments', 'Save'), ['class' => 'btn btn-success btn-block']);
 ActiveForm::end();
 $this->endContent();

@@ -27,7 +27,7 @@ class Comment extends ActiveRecord {
     
     public function attributeLabels(){
         return [
-            'content' => Yii::t('support', 'Content'),
+            'content' => Yii::t('website-comments', 'Content'),
         ];
     }
 

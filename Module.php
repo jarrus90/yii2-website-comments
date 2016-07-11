@@ -13,14 +13,14 @@ class Module extends BaseModule {
      *
      * @See [[GroupUrlRule::prefix]]
      */
-    public $urlPrefix = 'support';
+    public $urlPrefix = 'website-comments';
 
     /** @var array The rules to be used in URL management. */
     public $urlRules = [
         '<key:[A-Za-z0-9_-]+>' => 'front/page'
     ];
-    public $filesUploadUrl = '@web/uploads/support';
-    public $filesUploadDir = '@webroot/uploads/support';
+    public $filesUploadUrl = '@web/uploads/website-comments';
+    public $filesUploadDir = '@webroot/uploads/website-comments';
     public $redactorConfig = [];
     public $useCommonStorage = true;
 
@@ -29,11 +29,11 @@ class Module extends BaseModule {
         $this->modules = [
             'redactor' => ArrayHelper::merge([
                 'class' => 'jarrus90\Redactor\Module',
-                'imageUploadRoute' => '/support/upload/image',
-                'fileUploadRoute' => '/support/upload/file',
-                'imageManagerJsonRoute' => '/support/upload/image-json',
-                'fileManagerJsonRoute' => '/support/upload/file-json',
-                'uploadUrl' => '@web/uploads/support'
+                'imageUploadRoute' => '/website-comments/upload/image',
+                'fileUploadRoute' => '/website-comments/upload/file',
+                'imageManagerJsonRoute' => '/website-comments/upload/image-json',
+                'fileManagerJsonRoute' => '/website-comments/upload/file-json',
+                'uploadUrl' => '@web/uploads/website-comments'
             ], $this->redactorConfig, [
                 'uploadUrl' => $this->filesUploadUrl,
                 'uploadDir' => $this->filesUploadDir,

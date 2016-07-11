@@ -11,33 +11,18 @@ use yii\db\ActiveQuery;
 class WebsiteCommentsFinder extends Object {
 
     /** @var ActiveQuery */
-    protected $categoryQuery;
-
-    /** @var ActiveQuery */
-    protected $pageQuery;
-
+    protected $commentQuery;
+    
     /**
      * @return ActiveQuery
      */
-    public function getCategoryQuery() {
-        return $this->categoryQuery;
+    public function getCommentQuery() {
+        return $this->commentQuery;
     }
 
-    /**
-     * @return ActiveQuery
-     */
-    public function getPageQuery() {
-        return $this->pageQuery;
-    }
-
-    /** @param ActiveQuery $categoryQuery */
-    public function setCategoryQuery(ActiveQuery $categoryQuery) {
-        $this->categoryQuery = $categoryQuery;
-    }
-
-    /** @param ActiveQuery $pageQuery */
-    public function setPageQuery(ActiveQuery $pageQuery) {
-        $this->pageQuery = $pageQuery;
+    /** @param ActiveQuery $commentQuery */
+    public function setCommentQuery(ActiveQuery $commentQuery) {
+        $this->commentQuery = $commentQuery;
     }
 
     /**
@@ -47,19 +32,8 @@ class WebsiteCommentsFinder extends Object {
      *
      * @return \yii\db\ActiveQuery
      */
-    public function findCategory($condition) {
-        return $this->categoryQuery->where($condition);
-    }
-
-    /**
-     * Finds a page by the given condition.
-     *
-     * @param mixed $condition Condition to be used on search.
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function findPage($condition) {
-        return $this->pageQuery->where($condition);
+    public function findComment($condition) {
+        return $this->commentQuery->where($condition);
     }
 
 }

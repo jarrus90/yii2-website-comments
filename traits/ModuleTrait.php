@@ -15,7 +15,7 @@ trait ModuleTrait {
      * @return Module
      */
     public function getModule() {
-        return \Yii::$app->getModule('support');
+        return \Yii::$app->getModule('website-comments');
     }
 
 }

@@ -1,6 +1,6 @@
 <?php
 
-class m160707_115321_support_replies extends \yii\db\Migration {
+class m160710_115321_comments_init extends \yii\db\Migration {
 
     /**
      * Create tables.

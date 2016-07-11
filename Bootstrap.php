@@ -18,13 +18,13 @@ class Bootstrap implements BootstrapInterface {
     public function bootstrap($app) {
         /** @var Module $module */
         /** @var \yii\db\ActiveRecord $modelName */
-        if ($app->hasModule('support') && ($module = $app->getModule('support')) instanceof Module) {
+        if ($app->hasModule('website-comments') && ($module = $app->getModule('website-comments')) instanceof Module) {
             Yii::$container->setSingleton(WebsiteCommentsFinder::className(), [
-                'categoryQuery' => \jarrus90\WebsiteComments\Models\Category::find(),
+                'commentQuery' => \jarrus90\WebsiteComments\Models\Comment::find(),
             ]);
 
-            if (!isset($app->get('i18n')->translations['support*'])) {
-                $app->get('i18n')->translations['support*'] = [
+            if (!isset($app->get('i18n')->translations['website-comments*'])) {
+                $app->get('i18n')->translations['website-comments*'] = [
                     'class' => PhpMessageSource::className(),
                     'basePath' => __DIR__ . '/messages',
                     'sourceLanguage' => 'en-US'
@@ -37,22 +37,17 @@ class Bootstrap implements BootstrapInterface {
                     'prefix' => $module->urlPrefix,
                     'rules' => $module->urlRules,
                 ];
-                if ($module->urlPrefix != 'support') {
-                    $configUrlRule['routePrefix'] = 'support';
+                if ($module->urlPrefix != 'website-comments') {
+                    $configUrlRule['routePrefix'] = 'website-comments';
                 }
                 $configUrlRule['class'] = 'yii\web\GroupUrlRule';
                 $rule = Yii::createObject($configUrlRule);
                 $app->urlManager->addRules([$rule], false);
                 
-                $app->params['admin']['menu']['support'] = [
-                    'label' => Yii::t('support', 'Website comments'),
-                    'position' => 30,
-                    'items' => [
-                        [
-                            'label' => Yii::t('support', 'FAQ'),
-                            'url' => '/support/page/index'
-                        ],
-                    ]
+                $app->params['admin']['menu']['website-comments'] = [
+                    'label' => Yii::t('website-comments', 'Website comments'),
+                    'url' => '/website-comments/admin/index',
+                    'position' => 30
                 ];
             }
 
