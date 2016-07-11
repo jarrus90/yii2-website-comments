@@ -42,7 +42,7 @@ class Bootstrap implements BootstrapInterface {
                 $configUrlRule['class'] = 'yii\web\GroupUrlRule';
                 $rule = Yii::createObject($configUrlRule);
                 $app->urlManager->addRules([$rule], false);
-                $app->params['admin']['menu']['website-comments'] = function() {
+                $app->params['admin']['menu']['website-comments'] = function() use($module) {
                     return $module->getAdminMenu();
                 };
             }
