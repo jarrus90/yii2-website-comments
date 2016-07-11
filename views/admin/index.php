@@ -43,7 +43,7 @@ GridView::widget([
     'columns' => [
         [
             'attribute' => 'content',
-            'width' => '40%'
+            'width' => '50%'
         ],
         [
             'attribute' => 'created_at',
@@ -62,6 +62,7 @@ GridView::widget([
         ],
         [
             'attribute' => 'from_id',
+            'width' => '25%',
             'value' => 'from.name'
         ],
         [

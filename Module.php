@@ -13,11 +13,11 @@ class Module extends BaseModule {
      *
      * @See [[GroupUrlRule::prefix]]
      */
-    public $urlPrefix = 'website-comments';
+    public $urlPrefix = 'site/comments';
 
     /** @var array The rules to be used in URL management. */
     public $urlRules = [
-        '<key:[A-Za-z0-9_-]+>' => 'front/page'
+        '' => 'front/index'
     ];
     public $filesUploadUrl = '@web/uploads/website-comments';
     public $filesUploadDir = '@webroot/uploads/website-comments';

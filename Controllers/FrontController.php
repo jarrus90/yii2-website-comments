@@ -15,7 +15,7 @@ class FrontController extends Controller {
                     'scenario' => 'search'
         ]);
         $request = Yii::$app->request->get();
-        $request[$filterModel->formName()]['parent_id'] = NULL;
+        $request['parent_id'] = NULL;
         $dataProvider = $filterModel->search($request);
         
         return $this->render('index', [

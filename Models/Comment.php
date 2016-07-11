@@ -4,14 +4,11 @@ namespace jarrus90\WebsiteComments\Models;
 
 use Yii;
 use yii\db\ActiveRecord;
+use jarrus90\User\models\User;
 use jarrus90\User\models\Profile;
+
 class Comment extends ActiveRecord {
-    
-    /**
-     * @var Reply 
-     */
-    public $item;
-    
+
     /** @inheritdoc */
     public static function tableName() {
         return '{{%website_comments}}';
@@ -24,8 +21,8 @@ class Comment extends ActiveRecord {
             'search' => ['content', 'from_id', 'created_at', 'parent_id'],
         ];
     }
-    
-    public function attributeLabels(){
+
+    public function attributeLabels() {
         return [
             'content' => Yii::t('website-comments', 'Content'),
         ];
@@ -37,37 +34,48 @@ class Comment extends ActiveRecord {
      */
     public function rules() {
         return [
-            'required' => [['content'], 'required', 'on' => ['create', 'update']],
+            'required' => [['content', 'from_id'], 'required', 'on' => ['create', 'update']],
             'safeSearch' => [['content', 'from_id', 'created_at', 'parent_id'], 'safe', 'on' => ['search']],
-            'userExists' => ['from_id', 'exist', 'targetClass' => User::className(), 'targetAttribute' => 'id'],
+            'userExists' => ['from_id', 'exist', 'targetClass' => User::className(), 'targetAttribute' => 'id', 'on' => ['create', 'update']],
+            'parentExists' => ['parent_id', 'exist', 'targetClass' => Comment::className(), 'targetAttribute' => 'id', 'on' => ['create', 'update']],
         ];
     }
 
-    /** @inheritdoc */
-    public function init() {
-        parent::init();
-        if ($this->item instanceof Reply) {
-            $this->id = $this->item->id;
-            $this->setAttributes($this->item->getAttributes());
-            $this->setIsNewRecord($this->item->getIsNewRecord());
+    public function setItem($item) {
+        if ($item instanceof Comment) {
+            $this->id = $item->id;
+            $this->setAttributes($item->getAttributes());
+            $this->setIsNewRecord($item->getIsNewRecord());
         }
     }
-    
+
     public function formName() {
-        if($this->scenario == 'seacrh') {
-            return;
+        if ($this->scenario == 'search') {
+            return '';
         }
         return parent::formName();
     }
-    
+
+    /**
+     * Get parent
+     * @return Comment
+     */
     public function getParent() {
-        return $this->hasOne(Reply::className(), ['id' => 'parent_id']);
+        return $this->hasOne(Comment::className(), ['id' => 'parent_id']);
     }
-    
+
+    /**
+     * Get list of childs
+     * @return Comment[]
+     */
     public function getChilds() {
-        return $this->hasMany(Reply::className(), ['parent_id' => 'id']);
+        return $this->hasMany(Comment::className(), ['parent_id' => 'id']);
     }
-    
+
+    /**
+     * Get profile of creator
+     * @return Profile
+     */
     public function getFrom() {
         return $this->hasOne(Profile::className(), ['user_id' => 'from_id']);
     }
