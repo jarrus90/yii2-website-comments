@@ -78,7 +78,7 @@ class AdminController extends AdminCrudAbstract {
         if ($item) {
             return $item;
         } else {
-            throw new \yii\web\NotFoundHttpException(Yii::t('website-comments', 'The requested category does not exist'));
+            throw new \yii\web\NotFoundHttpException(Yii::t('website-comments', 'The requested comment does not exist'));
         }
     }
 

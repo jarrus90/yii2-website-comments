@@ -28,6 +28,7 @@ class Comment extends ActiveRecord {
         return [
             'content' => Yii::t('website-comments', 'Content'),
             'from_id' => Yii::t('website-comments', 'From'),
+            'is_blocked' => Yii::t('website-comments', 'Is blocked'),
             'created_at' => Yii::t('website-comments', 'Created at')
         ];
     }

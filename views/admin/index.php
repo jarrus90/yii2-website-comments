@@ -26,7 +26,7 @@ GridView::widget([
             Html::a('<i class="glyphicon glyphicon-plus"></i>', Url::toRoute(['create']), [
                 'data-pjax' => 0,
                 'class' => 'btn btn-default',
-                'title' => \Yii::t('website-comments', 'New category')]
+                'title' => \Yii::t('website-comments', 'New comment')]
             )
             . ' ' .
             Html::a('<i class="glyphicon glyphicon-repeat"></i>', Url::toRoute(['index']), [
