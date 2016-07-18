@@ -18,7 +18,8 @@ class FrontController extends Controller {
                     'item' => Yii::createObject([
                         'class' => Comment::className(),
                         'from_id' => Yii::$app->user->id,
-                        'created_at' => time()
+                        'created_at' => time(),
+                        'is_blocked' => false
                     ])
         ]);
         $this->performAjaxValidation($form);
@@ -32,6 +33,7 @@ class FrontController extends Controller {
         ]);
         $request = Yii::$app->request->get();
         $request['parent_id'] = NULL;
+        $request['is_blocked'] = false;
         $dataProvider = $filterModel->search($request, true);
         Yii::$app->view->title = Yii::t('website-comments', 'Comments');
         return $this->render('index', [
