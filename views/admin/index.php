@@ -5,6 +5,7 @@ use yii\helpers\Url;
 use yii\helpers\Html;
 use kartik\grid\GridView;
 use yii\data\ActiveDataProvider;
+use yii\web\JsExpression;
 
 /**
  * @var View $this
@@ -43,7 +44,14 @@ GridView::widget([
     'columns' => [
         [
             'attribute' => 'content',
-            'width' => '50%'
+            'width' => '60%',
+            'content' => function($model) {
+                $str = $model->content;
+                if($model->parent) {
+                    $str .= '<hr>' . Yii::t('website-comments', 'Reply to:') . '<br>' . $model->parent->content;
+                }
+                return $str;
+            }
         ],
         [
             'attribute' => 'created_at',
@@ -62,12 +70,51 @@ GridView::widget([
         ],
         [
             'attribute' => 'from_id',
-            'width' => '25%',
-            'value' => 'from.name'
+            'width' => '15%',
+            'value' => 'from.name',
+            'filterType' => GridView::FILTER_SELECT2,
+            'filterWidgetOptions' => [
+                'theme' => 'default',
+                'pluginOptions' => [
+                    'allowClear' => true,
+                    'ajax' => [
+                        'url' => Url::toRoute('/user/admin/list'),
+                        'dataType' => 'json',
+                        'delay' => 50,
+                        'data' => new JsExpression('function(params) { return {name: params.term }; }')
+                    ],
+                    'data' => [$filterModel->searchUserData],
+                    'templateResult' => new JsExpression('function (user) { return user.name; }'),
+                    'templateSelection' => new JsExpression('function (user) { return user.name; }'),
+                ],
+                'options' => [
+                    'placeholder' => Yii::t('website-comments', 'Select user'),
+                ]
+            ],
+        ],
+        [
+            'attribute' => 'is_blocked',
+            'class' => '\kartik\grid\BooleanColumn',
+            'trueLabel' => Yii::t('yii', 'Yes'),
+            'falseLabel' => Yii::t('yii', 'No'),
+            'format' => 'html',
+            'content' => function ($model) {
+                if ($model->is_blocked) {
+                    return Html::a("<span class='glyphicon glyphicon-ok text-danger'></span>", Url::toRoute(['unblock', 'id' => $model->id]), [
+                                'title' => Yii::t('website-comments', 'Unblock'),
+                                'data-confirm' => Yii::t('website-comments', 'Are you sure you want to unblock this comment?'),
+                    ]);
+                } else {
+                    return Html::a("<span class='glyphicon glyphicon-off text-success'></span>", Url::toRoute(['block', 'id' => $model->id]), [
+                                'title' => Yii::t('website-comments', 'Block'),
+                                'data-confirm' => Yii::t('website-comments', 'Are you sure you want to block this comment?'),
+                    ]);
+                }
+            }
         ],
         [
             'class' => 'yii\grid\ActionColumn',
-            'template' => '{update} {delete}',
+            'template' => '{delete}',
         ],
     ],
 ]);

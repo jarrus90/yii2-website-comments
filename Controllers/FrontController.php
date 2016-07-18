@@ -16,7 +16,7 @@ class FrontController extends Controller {
         ]);
         $request = Yii::$app->request->get();
         $request['parent_id'] = NULL;
-        $dataProvider = $filterModel->search($request);
+        $dataProvider = $filterModel->search($request, true);
         
         return $this->render('index', [
                     'filterModel' => $filterModel,
