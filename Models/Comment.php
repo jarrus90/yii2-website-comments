@@ -42,8 +42,14 @@ class Comment extends ActiveRecord {
             'required' => [['content', 'from_id'], 'required', 'on' => ['create', 'update']],
             'safeSearch' => [['content', 'from_id', 'created_at', 'parent_id', 'user_name'], 'safe', 'on' => ['search']],
             'userExists' => ['from_id', 'exist', 'targetClass' => User::className(), 'targetAttribute' => 'id', 'on' => ['create', 'update']],
-            'parentExists' => ['parent_id', 'exist', 'targetClass' => Comment::className(), 'targetAttribute' => 'id', 'on' => ['create', 'update']],
+            'parentExists' => ['parent_id', 'exist', 'targetClass' => Comment::className(), 'targetAttribute' => 'id', 'on' => ['create', 'update']]
         ];
+    }
+    
+    public function init() {
+        $this->created_at = time();
+        $this->is_blocked = false;
+        return parent::init();
     }
 
     public function setItem($item) {

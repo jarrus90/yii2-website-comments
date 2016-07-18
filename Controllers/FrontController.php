@@ -17,9 +17,7 @@ class FrontController extends Controller {
                     'scenario' => 'create',
                     'item' => Yii::createObject([
                         'class' => Comment::className(),
-                        'from_id' => Yii::$app->user->id,
-                        'created_at' => time(),
-                        'is_blocked' => false
+                        'from_id' => Yii::$app->user->id
                     ])
         ]);
         $this->performAjaxValidation($form);
