@@ -49,6 +49,7 @@ class Comment extends ActiveRecord {
     public function init() {
         $this->created_at = time();
         $this->is_blocked = false;
+        $this->parent_id = NULL;
         return parent::init();
     }
 
