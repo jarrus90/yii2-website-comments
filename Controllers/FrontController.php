@@ -9,7 +9,23 @@ use jarrus90\WebsiteComments\Models\Comment;
 
 class FrontController extends Controller {
 
+    use \jarrus90\Core\Traits\AjaxValidationTrait;
     public function actionIndex() {
+        
+        $form = Yii::createObject([
+                    'class' => Comment::className(),
+                    'scenario' => 'create',
+                    'item' => Yii::createObject([
+                        'class' => Comment::className(),
+                        'from_id' => Yii::$app->user->id,
+                        'created_at' => time()
+                    ])
+        ]);
+        $this->performAjaxValidation($form);
+        if ($form->load(Yii::$app->request->post()) && $form->save()) {
+            return $this->refresh();
+        }
+        
         $filterModel = Yii::createObject([
                     'class' => Comment::className(),
                     'scenario' => 'search'
@@ -17,17 +33,11 @@ class FrontController extends Controller {
         $request = Yii::$app->request->get();
         $request['parent_id'] = NULL;
         $dataProvider = $filterModel->search($request, true);
-        
+        Yii::$app->view->title = Yii::t('website-comments', 'Comments');
         return $this->render('index', [
                     'filterModel' => $filterModel,
                     'dataProvider' => $dataProvider,
-        ]);
-    }
-
-    public function actionSend() {
-        $filterModel = Yii::createObject([
-                    'class' => Comment::className(),
-                    'scenario' => 'create'
+                    'form' => $form
         ]);
     }
 

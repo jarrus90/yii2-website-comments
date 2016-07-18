@@ -17,7 +17,7 @@ class Comment extends ActiveRecord {
 
     public function scenarios() {
         return [
-            'create' => ['content', 'from_id', 'created_at', 'parent_id'],
+            'create' => ['content'],
             'update' => ['content'],
             'search' => ['content', 'from_id', 'created_at', 'parent_id', 'user_name', 'is_blocked'],
             'block' => ['is_blocked', 'blocked_by', 'blocked_at']
@@ -49,7 +49,7 @@ class Comment extends ActiveRecord {
     public function setItem($item) {
         if ($item instanceof Comment) {
             $this->id = $item->id;
-            $this->setAttributes($item->getAttributes());
+            $this->setAttributes($item->getAttributes(), false);
             $this->setIsNewRecord($item->getIsNewRecord());
         }
     }

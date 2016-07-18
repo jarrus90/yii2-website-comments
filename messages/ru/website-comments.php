@@ -17,22 +17,25 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Are you sure you want to block this comment?' => 'Вы уверены что хотите заблокировать этот комментарий?',
-    'Are you sure you want to unblock this comment?' => 'Вы уверены что хотите разблокировать этот комментарий?',
+    'Are you sure you want to block this comment?' => 'Вы уверены что хотите заблокировать этот отзыв?',
+    'Are you sure you want to unblock this comment?' => 'Вы уверены что хотите разблокировать этот отзыв?',
     'Block' => 'Заблокировать',
     'Content' => 'Контент',
-    'Create comment' => 'Создать комментарий',
+    'Create comment' => 'Создать отзыв',
     'Created at' => 'Создано в',
-    'Edit comment #{id}' => 'Редактировать комментарий #{id}',
+    'Edit comment #{id}' => 'Редактировать отзыв #{id}',
     'From' => 'От',
     'List' => 'Список',
-    'New comment' => 'Новый комментарий',
+    'New comment' => 'Новый отзыв',
+    'Reply' => 'Комментировать',
     'Reply to:' => 'Ответ на:',
     'Reset filter' => 'Сбросить фильтр',
     'Save' => 'Сохранить',
     'Select user' => 'Выберите пользователя',
-    'The requested comment does not exist' => 'Запрошенный комментарий не существует',
+    'The requested comment does not exist' => 'Запрошенный отзыв не существует',
     'Unblock' => 'Разблокировать',
-    'Website comments' => 'Комментарии к сайту',
-    'Is blocked' => 'Заблокировано'
+    'Comments' => 'Отзывы',
+    'Website comments' => 'Отзывы к сайту',
+    'Is blocked' => 'Заблокировано',
+    'Send' => 'Отправить'
 ];
