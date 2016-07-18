@@ -13,6 +13,7 @@ $formItem = ActiveForm::begin([
                 ],
             ],
         ]);
+echo Html::activeHiddenInput($form, 'parent_id');
 echo $formItem->field($form, 'content');
 echo Html::submitButton(Yii::t('website-comments', 'Save'), ['class' => 'btn btn-success btn-block']);
 ActiveForm::end();
