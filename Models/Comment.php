@@ -153,6 +153,16 @@ class Comment extends ActiveRecord {
         return;
     }
     
+    public function beforeSave($insert) {
+        if(parent::beforeSave($insert)) {
+            if($this->isAttributeChanged('content')) {
+                $this->content = nl2br(htmlspecialchars(strip_tags($this->content)));
+            }
+            return true;
+        }
+        return false;
+    }
+    
     public function delete() {
         if(parent::delete()) {
             foreach($this->childs AS $child) {
