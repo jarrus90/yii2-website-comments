@@ -1,0 +1,6 @@
+.website-comment-form .reply-block {
+    display: none;
+}
+.website-comment-form .reply-block.active {
+    display: block;
+}

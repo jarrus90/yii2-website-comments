@@ -8,10 +8,10 @@ $level = empty($level) ? 1 : $level;
         </a>
     </div>
     <div class="media-body">
-        <h4 class="media-heading"><?= $model->from->name; ?></h4>
-        <p><?= $model->content; ?></p>
+        <h4 class="media-heading comment-from"><?= $model->from->name; ?></h4>
+        <p class="comment-content"><?= $model->content; ?></p>
         <p class="comm-date">
-            <?= date('d-m-Y', $model->created_at); ?> / <button><?= Yii::t('website-comments', 'Reply'); ?></button>
+            <?= date('d-m-Y', $model->created_at); ?> / <button class="comment-reply" data-id="<?= $model->id; ?>"><?= Yii::t('website-comments', 'Reply'); ?></button>
         </p>
         <?php
         foreach ($model->childs AS $child) {

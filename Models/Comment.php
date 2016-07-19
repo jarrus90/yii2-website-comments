@@ -17,7 +17,7 @@ class Comment extends ActiveRecord {
 
     public function scenarios() {
         return [
-            'create' => ['content'],
+            'create' => ['content', 'parent_id'],
             'update' => ['content'],
             'search' => ['content', 'from_id', 'created_at', 'parent_id', 'user_name', 'is_blocked'],
             'block' => ['is_blocked', 'blocked_by', 'blocked_at']
