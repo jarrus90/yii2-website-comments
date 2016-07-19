@@ -18,6 +18,7 @@
         "yiisoft/yii2": "~2.0",
         "kartik-v/yii2-grid": "*",
         "jarrus90/yii2-core": "*",
+        "jarrus90/yii2-admin": "*",
         "jarrus90/yii2-user": "*"
     },
     "autoload": {
