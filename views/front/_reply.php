@@ -11,7 +11,10 @@ $level = empty($level) ? 1 : $level;
         <h4 class="media-heading comment-from"><?= $model->from->name; ?></h4>
         <p class="comment-content"><?= $model->content; ?></p>
         <p class="comm-date">
-            <?= date('d-m-Y', $model->created_at); ?> / <button class="comment-reply" data-id="<?= $model->id; ?>"><?= Yii::t('website-comments', 'Reply'); ?></button>
+            <?= date('d-m-Y', $model->created_at); ?> 
+            <?php if(!Yii::$app->user->isGuest) { ?>
+                / <button class="comment-reply" data-id="<?= $model->id; ?>"><?= Yii::t('website-comments', 'Reply'); ?></button>
+            <?php } ?>
         </p>
         <?php
         foreach ($model->childs AS $child) {

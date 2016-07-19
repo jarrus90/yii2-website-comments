@@ -3,21 +3,24 @@
 use yii\widgets\ListView;
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+
 jarrus90\WebsiteComments\CommentAsset::register($this);
-$formItem = ActiveForm::begin([
-            'layout' => 'horizontal',
-            'enableAjaxValidation' => true,
-            'enableClientValidation' => false,
-            'id' => 'website-comment',
-            'fieldConfig' => [
-                'horizontalCssClasses' => [
-                    'wrapper' => 'col-sm-9',
+if (!Yii::$app->user->isGuest) {
+    $formItem = ActiveForm::begin([
+                'layout' => 'horizontal',
+                'enableAjaxValidation' => true,
+                'enableClientValidation' => false,
+                'id' => 'website-comment',
+                'fieldConfig' => [
+                    'horizontalCssClasses' => [
+                        'wrapper' => 'col-sm-9',
+                    ],
                 ],
-            ],
-            'options' => [
-                'class' => 'website-comment-form',
-            ]
-        ]);
+                'options' => [
+                    'class' => 'website-comment-form',
+                ]
+    ]);
+}
 ?>
 <div class="alert alert-success reply-block"> 
     <button type="button" class="close">
