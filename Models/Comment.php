@@ -163,7 +163,7 @@ class Comment extends ActiveRecord {
     public function beforeSave($insert) {
         if(parent::beforeSave($insert)) {
             if($this->isAttributeChanged('content')) {
-                $this->content = nl2br(htmlspecialchars(strip_tags($this->content)));
+                $this->content = nl2br(htmlspecialchars($this->content));
             }
             return true;
         }
