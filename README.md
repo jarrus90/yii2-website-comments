@@ -1,5 +1,7 @@
 # Yii2-website-comments
 
+[![Build Status](https://travis-ci.org/jarrus90/yii2-website-comments.svg?branch=master)](https://travis-ci.org/jarrus90/yii2-website-comments)
+
 > **NOTE:** Module is in initial development. Anything may change at any time.
 
 ## Contributing to this project
