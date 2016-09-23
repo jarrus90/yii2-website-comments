@@ -17,6 +17,7 @@
         "php": ">=5.4.0",
         "yiisoft/yii2": "~2.0",
         "kartik-v/yii2-grid": "*",
+        "kartik-v/yii2-widget-datepicker": "*",
         "jarrus90/yii2-core": "*",
         "jarrus90/yii2-user": "*"
     },
