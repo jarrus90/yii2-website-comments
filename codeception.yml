@@ -15,10 +15,9 @@ modules:
 coverage:
     enabled: true
     include:
-            - ../Components/*
             - ../Controllers/*
             - ../Models/*
-            - ../Widgets/*
             - ../views/*
+            - ../WebsiteCommentsFinder.php
             - ../Bootstrap.php
             - ../Module.php
