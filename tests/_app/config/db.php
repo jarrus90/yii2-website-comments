@@ -2,7 +2,7 @@
 
 $db = [
     'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=localhost;dbname=website-comments_test',
+    'dsn' => 'mysql:host=localhost;dbname=website_comments_test',
     'username' => 'root',
     'password' => '',
     'charset' => 'utf8',
