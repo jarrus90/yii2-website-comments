@@ -1,5 +1,7 @@
 <?php
 
+namespace jarrus90\WebsiteComments\migrations;
+
 use yii\db\Migration;
 
 class m160710_115510_comments_add_block_info extends Migration {

@@ -1,5 +1,9 @@
 <?php
 
+namespace jarrus90\WebsiteComments\migrations;
+
+use Yii;
+
 class m160710_115321_comments_init extends \yii\db\Migration {
 
     /**
@@ -23,10 +27,9 @@ class m160710_115321_comments_init extends \yii\db\Migration {
         $this->createIndex('website_comments-from', '{{%website_comments}}', 'from_id');
         $this->createIndex('website_comments-created_at', '{{%website_comments}}', 'created_at');
         $this->createIndex('website_comments-parent', '{{%website_comments}}', 'parent_id');
-        
+
         $this->addForeignKey('fk-website_comments-parent', '{{%website_comments}}', 'parent_id', '{{%website_comments}}', 'id', 'CASCADE', 'RESTRICT');
         $this->addForeignKey('fk-website_comments-user', '{{%website_comments}}', 'from_id', '{{%user}}', 'id', 'CASCADE', 'RESTRICT');
-
     }
 
     /**

@@ -1,5 +1,7 @@
 <?php
 
+namespace jarrus90\WebsiteComments\migrations;
+
 use jarrus90\User\migrations\RbacMigration;
 
 class m160710_115500_comments_roles extends RbacMigration {
