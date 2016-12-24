@@ -1,6 +1,6 @@
 <?php
 
-namespace jarrus90\WebsiteComments\Controllers;
+namespace jarrus90\WebsiteComments\controllers;
 
 use Yii;
 use jarrus90\WebsiteComments\WebsiteCommentsFinder;
