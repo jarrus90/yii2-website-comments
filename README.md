@@ -29,3 +29,20 @@ YII 2.0
 php composer.phar update
 
 ~~~
+
+## Restrict and split frontend and backend applications
+
+```
+'modules' => [
+    'website-comments' => [
+        'as frontend' => 'jarrus90\WebsiteComments\filters\FrontendFilter',
+    ],
+],
+```
+```
+'modules' => [
+    'website-comments' => [
+        'as backend' => 'jarrus90\WebsiteComments\filters\BackendFilter',
+    ],
+],
+```
