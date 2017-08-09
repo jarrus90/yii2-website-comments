@@ -4,10 +4,9 @@ namespace jarrus90\WebsiteComments\controllers;
 
 use Yii;
 use jarrus90\WebsiteComments\WebsiteCommentsFinder;
-use jarrus90\Core\Web\Controllers\FrontController as Controller;
 use jarrus90\WebsiteComments\Models\Comment;
 
-class FrontController extends Controller {
+class FrontController extends \yii\web\Controller {
 
     use \jarrus90\Core\Traits\AjaxValidationTrait;
     public function actionIndex() {
