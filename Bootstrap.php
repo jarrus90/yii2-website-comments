@@ -41,9 +41,6 @@ class Bootstrap implements BootstrapInterface {
                 $configUrlRule['class'] = 'yii\web\GroupUrlRule';
                 $rule = Yii::createObject($configUrlRule);
                 $app->urlManager->addRules([$rule], false);
-                $app->params['admin']['menu']['website-comments'] = function() use($module) {
-                    return $module->getAdminMenu();
-                };
             } else {
                 if(empty($app->controllerMap['migrate'])) {
                     $app->controllerMap['migrate']['class'] = 'yii\console\controllers\MigrateController';
