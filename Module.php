@@ -55,7 +55,7 @@ class Module extends BaseModule {
         return [
             'label' => Yii::t('website-comments', 'Website comments'),
             'url' => '/website-comments/admin/index',
-            'icon' => '<i class="fa fa-fw fa-mail-reply-all"></i>',
+            'icon' => 'fa fa-fw fa-mail-reply-all',
             'position' => 61
         ];
     }
