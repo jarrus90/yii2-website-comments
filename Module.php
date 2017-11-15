@@ -52,12 +52,12 @@ class Module extends BaseModule {
     }
 
     public function getAdminMenu() {
-        return [
+        return ['webiste-comments' => [
             'label' => Yii::t('website-comments', 'Website comments'),
             'url' => '/website-comments/admin/index',
             'icon' => 'fa fa-fw fa-mail-reply-all',
             'position' => 61
-        ];
+        ]];
     }
 
 }
